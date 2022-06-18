@@ -9,7 +9,7 @@ class Solution {
           int lh = hight[l];
           int rh = hight[r];
           int min_h = Math.min(lh,rh);
-          int max = Math.max(max, min_h*(r-1));
+          int max = Math.max(max, min_h*(r-l));
           if(lf<rh)
             l++;
            else
