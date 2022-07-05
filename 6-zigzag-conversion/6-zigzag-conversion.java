@@ -10,9 +10,8 @@ class Solution {
             for(int j=i;j<s.length();j+=zigSpan) {
                 //add every element for each column and the span is zigSpan
                 res += s.charAt(j);
-                //if not the first and last column, just add additional element if not beyond the length of s
-                //and the span is zigSpan+j-2*i
-                if(i!=0 && i!=numRows-1 && zigSpan+j-2*i<s.length()) res += s.charAt(zigSpan+j-2*i);
+                
+                 if(i!=0 && i!=numRows-1 && zigSpan+j-2*i<s.length()) res += s.charAt(zigSpan+j-2*i);
             }
         }
         return res; 
