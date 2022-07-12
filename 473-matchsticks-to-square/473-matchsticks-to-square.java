@@ -1,35 +1,32 @@
 class Solution {
-    public boolean makesquare(int[] matchsticks) {
+    public boolean makesquare(int[] nums) {
         int sum = 0;
-        for (final int matchstick : matchsticks) {
-            sum += matchstick;
+        for(final int num : nums){
+            sum += num;
         }
-
-        if (sum % 4 != 0) {
+        if(sum%4 != 0){
             return false;
         }
-
-        Arrays.sort(matchsticks);
-
-        return canMakeSquare(matchsticks.length - 1, matchsticks, new int[4], sum / 4);
+        
+        Arrays.sort(nums);
+        return numsSqu(nums.length-1, nums, new int[4],sum/4);
     }
-
-    private boolean canMakeSquare(int i, int[] matchsticks, int[] sides, int sideLength) {
-        if (sideLength == 0) {
+    private boolean numsSqu(int i, int[] nums, int[] side, int sidelength){
+        if(sidelength == 0){
             return false;
         }
-
-        if (i < 0) {
+        
+        if(i<0){
             return true;
         }
-
-        for (int j = 0; j < sides.length; j++) {
-            if (matchsticks[i] + sides[j] <= sideLength) {
-                sides[j] += matchsticks[i];
-                if (canMakeSquare(i - 1, matchsticks, sides, sideLength)) {
+        
+        for (int j = 0; j < side.length; j++) {
+            if (nums[i] + side[j] <= sidelength) {
+                side[j] += nums[i];
+                if (numsSqu(i - 1, nums, side, sidelength)) {
                     return true;
                 }
-                sides[j] -= matchsticks[i];
+                side[j] -= nums[i];
             }
         }
 
