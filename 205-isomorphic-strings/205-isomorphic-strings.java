@@ -4,27 +4,20 @@ class Solution {
         return false;
     }
  
-    HashMap<Character, Character> map1 = new HashMap<>();
-    HashMap<Character, Character> map2 = new HashMap<>();
- 
-    for(int i=0; i<s.length(); i++){
-        char c1 = s.charAt(i);
-        char c2 = t.charAt(i);
- 
-        if(map1.containsKey(c1)){
-            if(c2!=map1.get(c1)){
-                return false;
+     HashMap <Character , Character> replacement = new HashMap <>();
+        HashMap <Character , Boolean> used = new HashMap <>();
+        for(int i = 0 ; i < s.length() ; i++) {
+            if(replacement.containsKey(s.charAt(i))) {
+                if(replacement.get(s.charAt(i)) != t.charAt(i))
+                    return false;
             }
-        }else{
-            if(map2.containsKey(c2)){
-                return false;
+            else {
+                if(used.containsKey(t.charAt(i)))
+                    return false;
+                replacement.put(s.charAt(i) , t.charAt(i));
+                used.put(t.charAt(i) , true);
             }
- 
-            map1.put(c1, c2);
-            map2.put(c2, c1);
         }
-    }
- 
-    return true;
+        return true;
     }
 }
