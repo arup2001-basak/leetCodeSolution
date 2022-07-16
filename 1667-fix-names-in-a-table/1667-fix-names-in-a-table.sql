@@ -2,6 +2,6 @@
 # Time:  O(nlogn)
 # Space: O(n)
 
-SELECT user_id, CONCAT(UPPER(SUBSTRING(name, 1, 1)), LOWER(SUBSTRING(name, 2))) AS name
-FROM Users
-ORDER BY user_id;
+select user_id, concat(UPPER(substring(name,1,1)) , LOWER(substring(name,2))) as name
+from users
+order by user_id;
