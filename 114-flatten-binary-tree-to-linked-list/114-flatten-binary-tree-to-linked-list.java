@@ -15,23 +15,19 @@
  */
 class Solution {
     public void flatten(TreeNode root) {
-    TreeNode cur = root;
-    while (cur != null)
-    {  
-        if (cur.left != null)
-        {
-            // if we need to prune a right subtree
-            if (cur.right != null)
-            {
-                TreeNode next = cur.left;
-                while (next.right != null)
-                    next = next.right;
-                next.right = cur.right;
+       if (root == null) {
+            return;
+        }
+        if (root.left != null) {
+            TreeNode temp = root.right;
+            root.right = root.left;
+            root.left = null;
+            TreeNode current = root.right;
+            while (current.right != null) {
+                current = current.right;
             }
-            cur.right = cur.left;
-            cur.left = null;
-        }  
-        cur = cur.right;
+            current.right = temp;
+        }
+        flatten(root.right);
     }
-}
 }
